@@ -26,7 +26,7 @@ public class OnCallController {
         Worker workers = getWorkers();
 
         WorkSchedule workSchedule = onCallService.makeWorkSchedule(workers, startDate);
-
+        
         outputView.printResult(workSchedule, startDate);
     }
 
