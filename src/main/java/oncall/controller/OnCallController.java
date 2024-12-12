@@ -1,6 +1,8 @@
 package oncall.controller;
 
+import oncall.domain.StartDate;
 import oncall.service.OnCallService;
+import oncall.utils.exception.OnCallException;
 import oncall.view.InputView;
 import oncall.view.OutputView;
 
@@ -17,5 +19,20 @@ public class OnCallController {
     }
 
     public void run() {
+        StartDate startDate = getStartDate();
+        
+    }
+
+    private StartDate getStartDate() {
+        while (true) {
+            try {
+                String input = inputView.askMonthAndDayOfTheWeek();
+
+                return onCallService.makeStartDate(input);
+            } catch (OnCallException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
     }
 }
