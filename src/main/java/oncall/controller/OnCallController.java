@@ -1,5 +1,6 @@
 package oncall.controller;
 
+import java.util.List;
 import oncall.domain.StartDate;
 import oncall.service.OnCallService;
 import oncall.utils.exception.OnCallException;
@@ -20,15 +21,26 @@ public class OnCallController {
 
     public void run() {
         StartDate startDate = getStartDate();
-        
+        List<List<String>> workers = getWorkers();
+    }
+
+    private List<List<String>> getWorkers() {
+        while (true) {
+            try {
+                List<String> weeksDayWorkers = onCallService.makeWorkers(inputView.askWeeksDayWorkers());
+                List<String> weekendDayWorkers = onCallService.makeWorkers(inputView.askWeekendWorkers());
+
+
+            } catch (OnCallException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     private StartDate getStartDate() {
         while (true) {
             try {
-                String input = inputView.askMonthAndDayOfTheWeek();
-
-                return onCallService.makeStartDate(input);
+                return onCallService.makeStartDate(inputView.askMonthAndDayOfTheWeek());
             } catch (OnCallException e) {
                 System.out.println(e.getMessage());
             }

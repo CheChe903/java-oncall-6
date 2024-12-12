@@ -2,6 +2,9 @@ package oncall.service;
 
 import static oncall.utils.exception.ErrorMessage.HAVE_TO_INT;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import oncall.domain.StartDate;
 import oncall.utils.Splitter;
 import oncall.utils.exception.OnCallException;
@@ -27,5 +30,7 @@ public class OnCallService {
         }
     }
 
-
+    public List<String> makeWorkers(String workerNames) {
+        return new ArrayList<>(Arrays.asList(splitByComma(workerNames)));
+    }
 }
