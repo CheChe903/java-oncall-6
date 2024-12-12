@@ -47,4 +47,12 @@ public class Worker {
             }
         }
     }
+
+    public List<String> getWeeksDayWorkers() {
+        return weeksDayWorkers;
+    }
+
+    public List<String> getWeekendDayWorkers() {
+        return weekendDayWorkers;
+    }
 }

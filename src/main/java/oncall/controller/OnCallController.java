@@ -2,6 +2,7 @@ package oncall.controller;
 
 import java.util.List;
 import oncall.domain.StartDate;
+import oncall.domain.WorkSchedule;
 import oncall.domain.Worker;
 import oncall.service.OnCallService;
 import oncall.utils.exception.OnCallException;
@@ -23,6 +24,10 @@ public class OnCallController {
     public void run() {
         StartDate startDate = getStartDate();
         Worker workers = getWorkers();
+
+        WorkSchedule workSchedule = onCallService.makeWorkSchedule(workers, startDate);
+
+        outputView.printResult(workSchedule, startDate);
     }
 
     private Worker getWorkers() {

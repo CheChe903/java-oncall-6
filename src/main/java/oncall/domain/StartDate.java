@@ -28,4 +28,12 @@ public class StartDate {
             throw new OnCallException(WEEK_NOT_AVAILABLE);
         }
     }
+
+    public int getStartMonth() {
+        return startMonth;
+    }
+
+    public String getDayOfTheWeek() {
+        return dayOfTheWeek;
+    }
 }

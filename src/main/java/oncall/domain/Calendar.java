@@ -1,6 +1,9 @@
 package oncall.domain;
 
+import static oncall.utils.exception.ErrorMessage.NOT_AVAILABLE_DAY_OF_THE_WEEK;
+
 import java.util.List;
+import oncall.utils.exception.OnCallException;
 
 public enum Calendar {
 
@@ -26,5 +29,31 @@ public enum Calendar {
         this.index = index;
         this.lastDay = lastDay;
         this.holiDays = holiDays;
+    }
+
+    public static Calendar findByIndex(int startMonth) {
+        for (Calendar calendar : Calendar.values()) {
+            if (calendar.index == startMonth) {
+                return calendar;
+            }
+        }
+        throw new OnCallException(NOT_AVAILABLE_DAY_OF_THE_WEEK);
+    }
+
+    public boolean isHoliday(int currentDay) {
+        for (int day : holiDays) {
+            if (currentDay == day) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public int getLastDay() {
+        return lastDay;
     }
 }

@@ -8,7 +8,8 @@ public enum ErrorMessage {
     HAVE_TO_INT("숫자로 입력해야 합니다."),
     NOT_AVAILABLE_WORKER("유효하지 근무자 입력 값입니다. 다시 입력해 주세요."),
     WORKER_SIZE_OUT_OF_RANGE("근무자는 5명 이상, 35명 이하여야 합니다."),
-    WORKER_NAME_OUT_OF_RANGE("근무자 이름은 5자 이하여야 합니다.");
+    WORKER_NAME_OUT_OF_RANGE("근무자 이름은 5자 이하여야 합니다."),
+    NOT_AVAILABLE_DAY_OF_THE_WEEK("요일이 잘못 되었습니다.");
 
     private static final String PREFIX = "[ERROR] ";
     private final String message;
